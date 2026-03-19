@@ -1,0 +1,15 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v6.0.0
+    hooks:
+      - id: detect-private-key
+      - id: check-added-large-files
+        args: ["--maxkb=512"]
+
+  - repo: local
+    hooks:
+      - id: block-risky-files
+        name: block risky file types
+        entry: bash -c 'git diff --cached --name-only --diff-filter=ACMR | grep -E "(^|/)(\.env|.*\.(csv|tsv|xlsx|xls|sqlite|db|pem|key|p12|pfx))$" && { echo "Blocked risky file type. Review staged files before commit."; exit 1; } || exit 0'
+        language: system
+        pass_filenames: false

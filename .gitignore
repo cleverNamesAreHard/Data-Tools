@@ -1,2 +1,12 @@
 .DS_Store
 *.csv
+*.tsv
+*.xlsx
+*.xls
+*.sqlite
+*.db
+.env
+*.pem
+*.key
+*.p12
+*.pfx
