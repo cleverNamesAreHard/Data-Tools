@@ -10,3 +10,4 @@
 *.key
 *.p12
 *.pfx
+!AMI_data_parsers/CMEP/test/*.csv
