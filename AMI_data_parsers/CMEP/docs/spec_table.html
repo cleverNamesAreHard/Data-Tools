@@ -1,0 +1,98 @@
+<table>
+	<tr>
+		<th>Column Number</th>
+		<th>Column Name</th>
+		<th>Column Type(s)</th>
+		<th>Column Description</th>
+	</tr>
+	<tr>
+		<td>1</td>
+		<td>Record Type</td>
+		<td>String</td>
+		<td>Always 'MEPMD01'</td>
+	</tr>
+	<tr>
+		<td>2</td>
+		<td>Record Version</td>
+		<td>Date ("YYYYMMDD")</td>
+		<td>"19970819" by default</td>
+	</tr>
+	<tr>
+		<td>3</td>
+		<td>Sender ID</td>
+		<td>String(16)</td>
+		<td>ID for the entity sending this record (usually sender company name)</td>
+	</tr>
+	<tr>
+		<td>4</td>
+		<td>Sender Customer ID</td>
+		<td>String(12)</td>
+		<td>ID for the Sender of the file (assigned by Meter Vendor)</td>
+	</tr>
+	<tr>
+		<td>5</td>
+		<td>Receiver ID</td>
+		<td>String(16)</td>
+		<td>ID for the entity Receipient of the file (eg. VertexOne, Sensus Analytics, etc)</td>
+	</tr>
+	<tr>
+		<td>6</td>
+		<td>Receiver Customer ID</td>
+		<td>String(12)</td>
+		<td>ID for the Receiver of the file (assigned by Meter Vendor)</td>
+	</tr>
+	<tr>
+		<td>7</td>
+		<td>Time Stamp</td>
+		<td>Datetime(YYYYMMDDHHMM)</td>
+		<td>Date and Time of record creation</td>
+	</tr>
+	<tr>
+		<td>8</td>
+		<td>Meter ID</td>
+		<td>String(12)</td>
+		<td>ID of physical meter. This is usually some arbitrary combination of letters and numbers that make up a meter manufacturer serial number.</td>
+	</tr>
+	<tr>
+		<td>9</td>
+		<td>Purpose</td>
+		<td>ENUM</td>
+		<td>Reason for Data Transmission (see parse_purpose(...))</td>
+	</tr>
+	<tr>
+		<td>10</td>
+		<td>Commodity</td>
+		<td>ENUM</td>
+		<td>Type of service for this record (see parse_commodity(...))</td>
+	</tr>
+	<tr>
+		<td>11</td>
+		<td>Units</td>
+		<td>ENUM</td>
+		<td>Unit of Measure for this record (see parse_units(...))</td>
+	</tr>
+	<tr>
+		<td>12</td>
+		<td>Calculation Constant</td>
+		<td>Float</td>
+		<td>Optional muliplier value to be applied to the usage in this record</td>
+	</tr>
+	<tr>
+		<td>13</td>
+		<td>Interval</td>
+		<td>Datetime(MMDDHHMM)</td>
+		<td>Describes the time interval between readings (eg. 00000100 = hourly, 00000015 = every 15 minutes, 01000000 = monthly)</td>
+	</tr>
+	<tr>
+		<td>14</td>
+		<td>Count</td>
+		<td>Integer</td>
+		<td>Number of intervals in this record (eg. if the record contains 1 interval of water usage, this is 1. If it contains 4 intervals of electric usage, this is 4)</td>
+	</tr>
+	<tr>
+		<td>15+</td>
+		<td>Data</td>
+		<td>list((Datetime(YYYYMMDDHHMM), ENUM, Float), ...)</td>
+		<td>Sets of 3 values for each interval in format: [Datetime of Interval, Protocol Text, and Interval Usage]. If 'Interval' column's value is not supplied, each set requires the datetime of the interval. If it is present, the datetime is only required for the first interval. (See parse_interval_data(...) and related functions)</td>
+	</tr>
+</table>
