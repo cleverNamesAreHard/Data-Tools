@@ -13,7 +13,7 @@ A utility for identifying malformed CSV rows whose column counts do not match th
 
 ### `AMI/`
 
-Tools for working with Automated Metering Infrastructure (AMI) data.
+Tools for working with Advanced Metering Infrastructure (AMI) data.
 
 #### `AMI/CMEP/`
 Tools for parsing data files in California Meter Exchange Protocol (CMEP) formats.
